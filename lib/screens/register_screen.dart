@@ -1,12 +1,6 @@
-
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:pmsna1/screens/login_screen.dart';
-
-
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -27,7 +21,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
   bool _validateP = false;
   bool _validateF = false;
  
-
   @override
   void dispose() {
     _textNombre.dispose();
@@ -35,8 +28,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
     _textPsswd.dispose();
     super.dispose();
   }
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +38,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       controller: _textNombre,
       decoration: InputDecoration(
       label: Text('Introduce tu nombre'),
-      errorText: _validateN ? 'El valor no debe ser vacio' : null,
+      errorText: _validateN ? 'El campo no puede ser vacio' : null,
       border: OutlineInputBorder()
       ),
     );
@@ -56,7 +47,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       controller: _textCorreo,
       decoration: InputDecoration(
       label: Text('Introduce tu correo'),
-      errorText: _validateC ? 'El valor no debe ser vacio' : _validateF ? 'Formato de correo incorrecto': null,
+      errorText: _validateC ? 'El campo no puede ser vacio' : _validateF ? 'El formato de correo es incorrecto': null,
       border: OutlineInputBorder()
       ),
     );
@@ -68,7 +59,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       controller: _textPsswd,
       decoration: InputDecoration(
       label: Text('Aquí pon una contraseña'),
-      errorText: _validateP ? 'El valor no debe ser vacio' :  null,
+      errorText: _validateP ? 'El campo no debe ser vacio' :  null,
       border: OutlineInputBorder()
       ),
     );
@@ -81,10 +72,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
           _textNombre.text.isEmpty ? _validateN = true : _validateN = false;
           _textCorreo.text.isEmpty ? _validateC = true : _validateC = false; 
           _textPsswd.text.isEmpty ? _validateP = true : _validateP = false;
-          !_textCorreo.text.contains('@') ? _validateF = true : _validateF = false;
+          !_textCorreo.text.contains('@') && !_textCorreo.text.contains('.com') ? _validateF = true : _validateF = false;
         
       });
     },);
+    
     //final btnRegresar = FilledButton(child: const Text('Regresar'), onPressed: ()=> Get.to(LoginScreen));
 
     final btnImg = ElevatedButton(onPressed: () async {
