@@ -11,6 +11,8 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
 
+  
+
   String selectedImagePath = '';
 
   final _textCorreo = TextEditingController();
@@ -72,6 +74,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           _textNombre.text.isEmpty ? _validateN = true : _validateN = false;
           _textCorreo.text.isEmpty ? _validateC = true : _validateC = false; 
           _textPsswd.text.isEmpty ? _validateP = true : _validateP = false;
+          
           !_textCorreo.text.contains('@') ? _validateF = true : _validateF = false;
         
       });

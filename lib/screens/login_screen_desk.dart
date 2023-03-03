@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:pmsna1/widgets/loading_modal_widgets.dart';
 import 'package:social_login_buttons/social_login_buttons.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class LoginScreenDesk extends StatefulWidget {
+  const LoginScreenDesk({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<LoginScreenDesk> createState() => _LoginScreenDeskState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenDeskState extends State<LoginScreenDesk> {
 
   bool isLoading=false;
 
@@ -26,6 +26,8 @@ final txtPass = TextFormField(
   ),
 );
 final spaceHorizontal = SizedBox(height: 10,);
+final spaceHorizontal2 = SizedBox(height: 60,);
+final spaceVertical = SizedBox(width: 20,);
 
 
 
@@ -75,7 +77,7 @@ final imgLogo = Image.asset('assets/logo.png', height: 200,);
                 image: DecorationImage(
                   opacity: .5,
                   fit: BoxFit.cover,
-                  image: AssetImage('assets/fondo.jpg')
+                  image: AssetImage('assets/fondodesk.jpg')
                 )
             ),
           child: Padding(
@@ -83,17 +85,26 @@ final imgLogo = Image.asset('assets/logo.png', height: 200,);
             child: Stack(
               alignment: Alignment.topCenter,
               children: [
-                Column(
-                  
-                  mainAxisAlignment: MainAxisAlignment.center,
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                      imgLogo,
-                      spaceHorizontal,
-                      txtEmail,
-                      spaceHorizontal,
-                      txtPass,
-                      spaceHorizontal,
-                      btnEmail,
+                    Flexible(child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        spaceHorizontal2,
+                        imgLogo,
+                        spaceHorizontal,
+                        txtEmail,
+                        spaceHorizontal,
+                        txtPass
+                      ],
+                    ),
+                    ),
+                    spaceVertical,
+                    Flexible(child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        btnEmail,
                       spaceHorizontal,
                       btnFacebook,
                       spaceHorizontal,
@@ -102,8 +113,11 @@ final imgLogo = Image.asset('assets/logo.png', height: 200,);
                       btnGitHub,
                       spaceHorizontal,
                       txtRegister
+                      ],
+                    ),
+                    ),
                   ],
-                ),
+                )
               ],
             ),
           ),
